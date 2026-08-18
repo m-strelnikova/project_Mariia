@@ -20,7 +20,15 @@ const navMenu = [
 
 function HeaderNav() {
   return (
-    <header style={{ background: "#3b3c3d", fontSize: "15px", fontWeight: 500, color: "#fff", width: "100%" }}>
+    <header style={{
+      display: "flex",
+      justifyContent: "space-between",
+      background: "#3b3c3d",
+      fontSize: "15px",
+      fontWeight: 500,
+      color: "#fff",
+      width: "100%"
+    }}>
       <div>
         <h1 style={{ fontWeight: 900, fontSize: "20px", color: "#fff" }}>Сникер - магазин</h1>
       </div>

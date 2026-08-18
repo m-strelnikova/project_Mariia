@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Product from "../../components/product";
+import Banner from "../../components/banner";
 
 async function getProducts() {
     try {
@@ -15,31 +17,23 @@ async function getProducts() {
 function Home() {
 
     const [items, setItems] = useState([]);
-
     useEffect(() => {
         async function loadProducts() {
             const data = await getProducts();
             setItems(data);
         }
-
         loadProducts();
     }, []);
 
     return (<>
-
+        <div><Banner /></div>
         <div>
-            {items.map((item) => (
-                <div key={item.id}>
-                    <img
-                        src={item.image}
-                        alt={item.name}
-                    />
-
-                    <h2>{item.name}</h2>
-
-                    <p>{item.price} €</p>
-                </div>
-            ))}
+            <h2>Товары</h2>
+            <ul style={{ listStyleType: "none", display: "flex" }}>
+                {items.map((item) => (
+                    <li key={item.id}><Product item={item} /></li>
+                ))}
+            </ul>
         </div>
 
 
