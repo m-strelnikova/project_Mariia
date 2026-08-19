@@ -27,7 +27,10 @@ function HeaderNav() {
       fontSize: "15px",
       fontWeight: 500,
       color: "#fff",
-      width: "100%"
+      width: "100%",
+      height: "110px",
+      alignItems: "center",
+      padding: "0 13.02%"
     }}>
       <div>
         <h1 style={{ fontWeight: 900, fontSize: "20px", color: "#fff" }}>Сникер - магазин</h1>
@@ -42,6 +45,8 @@ function HeaderNav() {
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "white" : "rgba(255, 255, 255, 0.5)",
+                    textDecoration: "none",
+                    paddingLeft: "64px"
                   };
                 }}
               >

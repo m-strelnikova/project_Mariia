@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Contact from './pages/contact';
 import ShoppingBox from './pages/shoppingBox';
 import HeaderNav from './components/nav';
+import Footer from './components/footer';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/shoppingbox" element={<ShoppingBox />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </>
   );
 }

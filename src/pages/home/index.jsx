@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Product from "../../components/product";
 import Banner from "../../components/banner";
+import style from "./styles.module.css"
 
 async function getProducts() {
     try {
@@ -25,11 +26,11 @@ function Home() {
         loadProducts();
     }, []);
 
-    return (<>
-        <div><Banner /></div>
-        <div>
+    return (<div>
+        <Banner /> 
+        <div className={style.container_home}>
             <h2>Товары</h2>
-            <ul style={{ listStyleType: "none", display: "flex" }}>
+            <ul style={{ listStyleType: "none", display: "flex",  flexWrap: "wrap", gap: "10%", justifyContent: "space-between"}}>
                 {items.map((item) => (
                     <li key={item.id}><Product item={item} /></li>
                 ))}
@@ -37,6 +38,6 @@ function Home() {
         </div>
 
 
-    </>)
+    </div>)
 }
 export default Home;
