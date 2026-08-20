@@ -1,0 +1,12 @@
+.container_home {
+  padding: 0 13.02%;
+}
+
+.container_home h2 {
+  width: 100%;
+  font-weight: 700;
+  font-size: 36px;
+  color: #000;
+  padding-bottom: 37px;
+  border-bottom: 2px solid #eaeaea;
+}
