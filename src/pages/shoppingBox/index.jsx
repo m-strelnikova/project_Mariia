@@ -25,6 +25,32 @@ function ShoppingBox() {
     }, [])
 
 
+    // Функция удаления товара
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`https://mockapi.io{id}`);
+            setCarItems((prev) => prev.filter(item => item.id !== id));
+        } catch (error) {
+            console.error("Ошибка при удалении элемента:", error);
+            alert("Не удалось удалить товар из корзины");
+        }
+    };
+
+    if (carItems.length === 0) {
+        return (
+            <div style={{ padding: "0 13.02%" }}>
+                <h1 style={{
+                    padding: "50px 0",
+                    fontWeight: 700,
+                    width: "100%",
+                    fontSize: "36px",
+                    borderBottom: "1px solid #eaeaea"
+                }}>Корзина</h1>
+                <p style={{ fontSize: '24px', textAlign: 'center' }}>Корзина пуста</p>
+            </div>);
+    }
+
+
     return (<>
 
         <div style={{ padding: "0 13.02%" }}>
@@ -58,7 +84,7 @@ function ShoppingBox() {
                         {carItems.map((carItem) => {
                             return (
                                 <li key={carItem.id}>
-                                    <CarProduct item={carItem} />
+                                    <CarProduct item={carItem} onDelete={handleDelete} />
                                 </li>
                             )
                         })}

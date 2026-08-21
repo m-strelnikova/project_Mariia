@@ -2,38 +2,9 @@ import deleteLogo from "../../assets/img/logo/delete.svg";
 import axios from "axios";
 import { useState } from "react";
 
-async function deleteCarItem(id) {
-    try {
-        const response = await axios.delete(
-            `https://mockapi.io:{id}`
-        );
-        console.log("Успешно удалено на сервере:", response.data);
-        return true;
-    } catch (error) {
-        console.error("Ошибка при удалении на сервере:", error);
-        return false;
-    }
-}
+function CarProduct({ item, onDelete }) {
 
-function CarProduct({ item }) {
-
-    const [isDeleted, setIsDeleted] = useState(false);
-
-
-    async function handleRemove() {
-        const success = await deleteCarItem(item.id);
-
-        if (success) {
-            setIsDeleted(true);
-        } else {
-            alert("Не удалось удалить товар. Попробуйте еще раз.");
-        }
-    }
-
-    // Если товар был успешно удален, компонент ничего не отображает
-    if (isDeleted) {
-        return null;
-    }
+    const [mouseOver, setMouseOver] = useState(false);
 
     return (
         <div style={{
@@ -96,9 +67,15 @@ function CarProduct({ item }) {
             </div>
             <div>
                 <button style={{
-                    background: "#F3F3F3", borderRadius: "100%", width: "76px", height: "76px", border: "none"
+                    background: mouseOver?  "#e9e6e6" : "#f3f3f3" ,
+                    borderRadius: "100%",
+                    width: "76px",
+                    height: "76px",
+                    border: "none"
                 }}
-                    onClick={handleRemove}>
+                    onClick={() => onDelete(item.id)}
+                    onMouseEnter={() => setMouseOver(true)}
+                    onMouseLeave={() => setMouseOver(false)}>
                     <img src={deleteLogo} alt="delete" />
                 </button></div>
         </div>
